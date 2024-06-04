@@ -1,9 +1,9 @@
-public class Nodo {
+public class Nodo1 {
     String palabra;
-    Nodo izquierda;
-    Nodo derecha;
+    Nodo1 izquierda;
+    Nodo1 derecha;
 
-    public Nodo(String palabra) {
+    public Nodo1(String palabra) {
         this.palabra = palabra;
         this.izquierda = this.derecha = null;
     }
