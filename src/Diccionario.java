@@ -15,7 +15,7 @@ public class Diccionario {
         try {
             // Convierte la cadena de texto en un valor entero
             v = Integer.parseInt(text);
-            if (v < 0) {
+            if (v < 0 || v > 9) {
                 return false;
             }
             return true;
@@ -53,7 +53,7 @@ public class Diccionario {
             String option = sc.next();
             while (!IsInteger(option)) {
                 System.out.print(
-                        "El valor ingresado no es un entero\n\nIntente nuevamente: ");
+                        "El valor ingresado no es un entero o no es una opción válida\n\nIntente nuevamente: ");
                 option = sc.next();
             }
             op = Integer.parseInt(option);
