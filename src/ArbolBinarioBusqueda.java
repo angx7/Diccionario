@@ -1,15 +1,15 @@
 public class ArbolBinarioBusqueda {
     private Nodo1 raiz;
 
-    public ArbolBinarioBusqueda(){
+    public ArbolBinarioBusqueda() {
         raiz = null;
     }
 
-    public void insertar(String palabra){
-        raiz = insertarRecursivamente(raiz, palabra); 
+    public void insertar(String palabra) {
+        raiz = insertarRecursivamente(raiz, palabra);
     }
 
-    public Nodo1 insertarRecursivamente (Nodo1 raiz, String palabra){
+    public Nodo1 insertarRecursivamente(Nodo1 raiz, String palabra) {
         if (raiz == null) {
             raiz = new Nodo1(palabra);
             return raiz;
@@ -17,18 +17,18 @@ public class ArbolBinarioBusqueda {
 
         if (palabra.compareTo(raiz.palabra) < 0) {
             raiz.izquierda = insertarRecursivamente(raiz.izquierda, palabra);
-        } else if (palabra.compareTo(raiz.palabra) > 0){
+        } else if (palabra.compareTo(raiz.palabra) > 0) {
             raiz.derecha = insertarRecursivamente(raiz.derecha, palabra);
         }
 
         return raiz;
     }
 
-    public boolean buscar(String palabra){
+    public boolean buscar(String palabra) {
         return buscarRecursivamente(raiz, palabra) != null;
     }
 
-    public Nodo1 buscarRecursivamente(Nodo1 raiz, String palabra){
+    public Nodo1 buscarRecursivamente(Nodo1 raiz, String palabra) {
         if (raiz == null || raiz.palabra.equals(palabra)) {
             return raiz;
         }
@@ -40,11 +40,11 @@ public class ArbolBinarioBusqueda {
         }
     }
 
-    public void eliminar(String palabra){
+    public void eliminar(String palabra) {
         raiz = eliminarRecursivamente(raiz, palabra);
     }
 
-    public Nodo1 eliminarRecursivamente(Nodo1 raiz, String palabra){
+    public Nodo1 eliminarRecursivamente(Nodo1 raiz, String palabra) {
         if (raiz == null) {
             return raiz;
         }
@@ -68,7 +68,12 @@ public class ArbolBinarioBusqueda {
         return raiz;
     }
 
-    public String minimoValor(Nodo1 raiz){
+    public void minYMax() {
+        System.out.println("El valor minimo es: " + minimoValor(raiz));
+        System.out.println("El valor maximo es: " + maximoValor(raiz));
+    }
+
+    public String minimoValor(Nodo1 raiz) {
         String minimoValor = raiz.palabra;
         while (raiz.izquierda != null) {
             minimoValor = raiz.izquierda.palabra;
@@ -78,11 +83,21 @@ public class ArbolBinarioBusqueda {
         return minimoValor;
     }
 
-    public void recorrerInOrden(){
+    public String maximoValor(Nodo1 raiz) {
+        String maximoValor = raiz.palabra;
+        while (raiz.derecha != null) {
+            maximoValor = raiz.derecha.palabra;
+            raiz = raiz.derecha;
+        }
+
+        return maximoValor;
+    }
+
+    public void recorrerInOrden() {
         recorrerInOrdenRecursivamente(raiz);
     }
 
-    public void recorrerInOrdenRecursivamente(Nodo1 raiz){
+    public void recorrerInOrdenRecursivamente(Nodo1 raiz) {
         if (raiz != null) {
             recorrerInOrdenRecursivamente(raiz.izquierda);
             System.out.print(raiz.palabra + " ");
@@ -90,11 +105,11 @@ public class ArbolBinarioBusqueda {
         }
     }
 
-    public void recorrerPreOrden(){
+    public void recorrerPreOrden() {
         recorrerPreOrdenRecursivamente(raiz);
     }
 
-    public void recorrerPreOrdenRecursivamente(Nodo1 raiz){
+    public void recorrerPreOrdenRecursivamente(Nodo1 raiz) {
         if (raiz != null) {
             System.out.print(raiz.palabra + " ");
             recorrerPreOrdenRecursivamente(raiz.izquierda);
@@ -102,11 +117,11 @@ public class ArbolBinarioBusqueda {
         }
     }
 
-    public void recorrerPostOrden(){
+    public void recorrerPostOrden() {
         recorrerPostOrdenRecursivamente(raiz);
     }
 
-    public void recorrerPostOrdenRecursivamente(Nodo1 raiz){
+    public void recorrerPostOrdenRecursivamente(Nodo1 raiz) {
         if (raiz != null) {
             recorrerPostOrdenRecursivamente(raiz.izquierda);
             recorrerPostOrdenRecursivamente(raiz.derecha);
@@ -114,11 +129,11 @@ public class ArbolBinarioBusqueda {
         }
     }
 
-    public int altura(){
+    public int altura() {
         return obtenerAlturaRecursivamente(raiz);
     }
 
-    public int obtenerAlturaRecursivamente(Nodo1 raiz){
+    public int obtenerAlturaRecursivamente(Nodo1 raiz) {
         if (raiz == null) {
             return 0;
         } else {
@@ -128,18 +143,4 @@ public class ArbolBinarioBusqueda {
         }
     }
 
-    public void MinYMax(){
-        System.out.println("El valor minimo es: " + minimoValor(raiz));
-        System.out.println("El valor maximo es: " + maximoValor(raiz));
-    }
-
-    public String maximoValor(Nodo1 raiz){
-        String maximoValor = raiz.palabra;
-        while (raiz.derecha != null) {
-            maximoValor = raiz.derecha.palabra;
-            raiz = raiz.derecha;
-        }
-
-        return maximoValor;
-    }
 }

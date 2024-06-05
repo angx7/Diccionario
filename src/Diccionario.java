@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 public class Diccionario {
-    private static String defaultcolor = "\u001B[37m";
+    static String defaultcolor = "\u001B[37m";
     static Scanner sc = new Scanner(System.in);
 
-    private static void limpiarConsola() {
+    public static void limpiarConsola() {
         System.out.print("\033[2J");
         System.out.print("\033[H");
     }
 
     // Método para validar solo números
-    public static boolean IsInteger(String text) {
+    public static boolean isInteger(String text) {
         int v;
         try {
             // Convierte la cadena de texto en un valor entero
@@ -51,7 +51,7 @@ public class Diccionario {
         do {
             menu();
             String option = sc.next();
-            while (!IsInteger(option)) {
+            while (!isInteger(option)) {
                 System.out.print(
                         "El valor ingresado no es un entero o no es una opción válida\n\nIntente nuevamente: ");
                 option = sc.next();
@@ -116,7 +116,7 @@ public class Diccionario {
                     break;
 
                 case 8:
-                    diccionario.MinYMax();
+                    diccionario.minYMax();
                     sc.nextLine();
                     sc.nextLine();
                     break;

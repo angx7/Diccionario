@@ -1,0 +1,48 @@
+@startuml Diagrama de Diccionario
+
+class Nodo1{
+    - String palabra
+    - Nodo1 izquierda
+    - Nodo1 derecha
+
+    + Nodo1(String palabra)
+}
+
+class ArbolBinarioBusqueda{
+    - Nodo1 raiz
+
+    + ArbolBinarioBusqueda()
+    + insertar(String palabra) : void
+    + insertarRecursivamente(Nodo1 raiz, String palabra) : Nodo1
+    + buscar(String palabra) : boolean
+    + buscarRecursivamente(Nodo1 raiz, String palabra) : Nodo1
+    + eliminar(String palabra) : void
+    + eliminarRecursivamente(Nodo1 raiz, String palabra) : Nodo1
+    + minYMax() : void
+    + minimoValor (Nodo1 raiz) : String
+    + maximoValor (Nodo1 raiz) : String
+    + recorrerInOrden() : void
+    + recorrerInOrdenRecursivamente(Nodo1 raiz) : void
+    + recorrerPreOrden() : void
+    + recorrerPreOrdenRecursivamente(Nodo1 raiz) : void
+    + recorrerPostOrden() : void
+    + recorrerPostOrdenRecursivamente(Nodo1 raiz) : void
+    + altura() : int
+    + obtenerAlturaRecursivamente(Nodo1 raiz) : int
+}
+
+class Diccionario{
+    - String defaultcolor
+    - Scanner sc 
+
+    + limpiarConsola() : void
+    + isInteger (String text) : boolean
+    + menu () : void
+    + main (String[] args) : void 
+}
+
+Diccionario ...> ArbolBinarioBusqueda : > crea
+ArbolBinarioBusqueda <|-- Nodo1
+
+
+@enduml
